@@ -1,0 +1,36 @@
+Conceptos a preguntar en las pruebas de Intro a la IA:
+
+- Alan Turing.
+- ML y DL. (En que son distintos).
+- AS y ANS.
+- Clustering.
+- Red. Dimensionalidad.
+- Datos.
+- Modelo.
+- Aprendizaje.
+- Vectores y E. Vect.
+- Feature Engineering (Pre processing).
+- Instancia.
+- Feature.
+- Target.
+- Loss Function.
+- Generalización.
+- ERM. expected y empirical.
+- Regularización.
+- Kfold CV.
+
+Maximum likelihood estimation
+- P(x|𝛉) -> Likelihood: Prob de los datos, dado un modelo con ciertos parámetros.
+- P(𝛉|x) -> Posterior
+- P(𝛉) -> Prior; subjetiva.
+- P(x) - Evidencia; Prob. marginal.
+
+Minimizar: derivar parcialmente e igualar a cero.
+
+Pasos del MLE.
+1.- Multiplicar likelihood.
+2.- Aplicar -log o -ln.
+3.- Transformar multiplicaciones (epitatorias) a sumatorias.
+4.- Derivar e igualar a cero.
+
+
