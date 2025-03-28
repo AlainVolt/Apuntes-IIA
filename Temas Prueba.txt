@@ -33,4 +33,6 @@ Pasos del MLE.
 3.- Transformar multiplicaciones (epitatorias) a sumatorias.
 4.- Derivar e igualar a cero.
 
+comando: 
+conda create -n ML python=3.10
 
