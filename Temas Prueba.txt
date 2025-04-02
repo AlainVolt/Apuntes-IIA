@@ -1,3 +1,5 @@
+Clase 28/03/25
+
 Conceptos a preguntar en las pruebas de Intro a la IA:
 
 - Alan Turing.
@@ -35,4 +37,64 @@ Pasos del MLE.
 
 comando: 
 conda create -n ML python=3.10
+
+
+
+Clase 02-04-25
+
+30 abril control 1
+junio
+julio
+
+
+comandos utiles:
+conda activate ML
+pip list
+
+
+
+
+
+intentar evitar el overfitting
+matriz de diseño es la transpuesta de fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
