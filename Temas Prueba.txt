@@ -61,12 +61,25 @@ matriz de diseño es la transpuesta de fi
 
 
 
+Clase 04/04/25
+En apuntes de mi tablet
+---
+
+
+Clase 08/04/25
+
+data.City.unique()
+
+
+santiago = data[data.City == "Santiago"]
+santiago
+
+
+sns.scatterplot(santiago, x="year", y="AverageTemperature")
 
 
 
-
-
-
+scikit-learn.org   linear regression
 
 
 
