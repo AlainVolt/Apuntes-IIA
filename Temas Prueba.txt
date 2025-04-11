@@ -83,23 +83,25 @@ scikit-learn.org   linear regression
 
 
 
+Clase 11-04-25
+
+Loss functions:
+Min-LnL = Min C.E. ---> Clasificacion
+Min Least Squares -----> Regresion
+
+
+AUC ROC > 0.8 ---> Buen Modelo
 
 
 
 
 
+para no mostrar datos atipicos en boxplot:
+showfliers=false
 
 
 
-
-
-
-
-
-
-
-
-
+el accuracy en train y test es similar, entonces es probable que tenga poco overfitting
 
 
 
