@@ -105,6 +105,33 @@ el accuracy en train y test es similar, entonces es probable que tenga poco over
 
 
 
+Clase 16/04/2025
+
+Mult. Matricial ------> Transformación lineal ---> Cambio de Perspectiva
+
+Cuando se aplica la transformación lineal (Mult. Matricial) los vectores no suelen conservar su dirección.
+Pero hay vectores especiales que sí conservan su dirección ---> Vectores propios.
+Los valores propios son los valores por los que se escalan los vectores propios.
+
+
+det(A - lambda * I) = 0
+
+
+SVD ---> Teo. fundamental Alg. Lineal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
