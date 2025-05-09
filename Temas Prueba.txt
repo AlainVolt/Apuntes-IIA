@@ -3,29 +3,67 @@ Clase 28/03/25
 Conceptos a preguntar en las pruebas de Intro a la IA:
 
 - Alan Turing.
-- ML y DL. (En que son distintos).
-- AS y ANS.
+- ML y DL. (En que son distintos). ---> El Deep Learning (DL) es un subconjunto de ML que se basa en redes neuronales artificiales con múltiples capas para analizar y aprender patrones complejos en grandes volúmenes de datos. 
+- Machine Learning ---> Disenar algoritmos que extraigan información valiosa automaticamente desde los datos. El Machine Learning (ML) es un área de la Inteligencia Artificial (IA) que permite a las máquinas aprender de los datos sin ser programadas explícitamente.
+El DL utiliza redes neuronales profundas, mientras que el ML puede usar otros algoritmos como árboles de decisión o máquinas de soporte vectorial. 
+En ML, se deben extraer manualmente las características de los datos, mientras que en DL, las redes neuronales aprenden estas características automáticamente. 
+El DL puede manejar datos más complejos y no estructurados que el ML. 
+El DL suele ofrecer mayor precisión en tareas complejas, pero requiere más tiempo y recursos de entrenamiento. 
+El DL es ideal para tareas como visión artificial, procesamiento del lenguaje natural y análisis de datos no estructurados, mientras que el ML es más adecuado para tareas más específicas con datos estructurados. 
+- AS y ANS. 
+- Aprendizaje Supervisado ----> Clasificacion, Regresion.
+- Aprendizaje No Supervisado ---> Clustering, Red. Dimensionalidad.
 - Clustering.
 - Red. Dimensionalidad.
 - Datos.
 - Modelo.
 - Aprendizaje.
 - Vectores y E. Vect.
-- Feature Engineering (Pre processing).
-- Instancia.
-- Feature.
-- Target.
-- Loss Function.
-- Generalizaci贸n.
-- ERM. expected y empirical.
-- Regularizaci贸n.
-- Kfold CV.
+- Feature Engineering (Pre processing).  ---> es el proceso de transformar datos crudos en un formato mas util y relevante para los modelos de aprendizaje automático. Por ejemplo, transformar a un formato numerico y tabulado. Implica la creación, seleccion, transformacion y extraccion de caracteristicas (variables) de los datos para mejorar el rendimiento del modelo. 
+- Instancia. ---> Fila, que tambien puede llamarse ejemplo o data point.
+- Feature. ----> Columna, que tambien puede llamarse atributo.
+- Target. ----> Etiqueta a predecir. Tambien llamada response o annotation.
+- Loss Function. ---> evalua el desempe?o del modelo como predictor de datos.
+- Generalizacion.  ---> que un modelo se desempe?e bien para datos nuevos/desconocidos.
+- Overfitting. ---> cuando un modelo se ajusta muy bien a los datos de entrenamiento, pero no generaliza bien en nuevos datos. Tiende a suceder más cuando tenemos pocos datos y un modelo excesivamente complejo.
+- ERM. expected y empirical. ---> busca un vector de parametros que minimice el ERM, que es el promedio de la loss Function. Tiende a generar overfitting. Para que se desempe?e bien en datos desconocidos debe minimizar el expected risk.
+- Regularizacion. ---> Proceso que combate el overfitting sesgando la busqueda, introduciendo un termino de penalizacion.
+- Kfold CV. ---> mide la generalizacion del modelo en nuevos datos. Este proceso itera entre las K posibles combinaciones, promediando los desempenos del modelo.
 
-Maximum likelihood estimation
-- P(x|饾泬) -> Likelihood: Prob de los datos, dado un modelo con ciertos par谩metros.
-- P(饾泬|x) -> Posterior
-- P(饾泬) -> Prior; subjetiva.
+Modelos lineales para regresion
+- Pseudoinversa de Moore-Penrose ---> es una matriz generalizada que se utiliza cuando la inversa tradicional de una matriz no existe, como en el caso de matrices no cuadradas o singulares. Se denota como A+ y se define por cuatro ecuaciones que deben satisfacer la matriz A+. Esta pseudoinversa es útil para resolver sistemas de ecuaciones lineales, encontrar soluciones de mínimos cuadrados y realizar otras operaciones en álgebra lineal. 
+A+ = (A^T * A)^-1 * A^T si N>M.
+A+ =  A^T * (A^T * A)^-1 si N<M.
+A+ es equivalente a minimizar los least squares para el caso sobredeterminado, y es la matriz de norma mínima para el caso subdeterminado.
+
+Interpretacion geometrica Least Squares --> La solucion de least squares de w corresponde a la eleccion de y que vive en S y que es mas cercana a y. Esta solucion corresponde a la proyeccion ortogonal de t en S.
+
+- Usar la pseudoinversa puede ser costoso computacionalmente para datasets muy grandes ---> Utilizar algoritmos secuenciales es mejor opcion.
+- Como la técnica de:
+Sthocastic Gradient Descent (SGD) ---> Actualiza el vector de parametros w en la iteracion (tau) + 1.
+- En el caso de usar sum of squares error, el algoritmo se llama Least-mean-squares (LMS).
+- En el modelo de regresion ocupamos el metodo numerico de Stocastic Gradient Descent, para encontrar valores minimos
+
+
+- Regularized least squares ---> Uno de los regularizadores más simples es la suma de cuadrados del vector de pesos, el cual se llama weight decay, porque lleva
+a los pesos a “decaer” hacia el cero. También se conoce como Ridge o L2.
+- Podemos utilizar maximum likelihood para encontrar el WML
+
+- Regularizador general ---> Podemos usar un regularizador general, donde q=2 corresponde al caso anterior (Ridge). El caso de q=1 recibe el nombre de Lasso o L1.
+- este proceso de optimización se puede interpretar como un multiplicador de Lagrange.
+
+- Bias-Variance Decomposition ---> El error total se puede descomponer en dos tipos de errores. Estos son el bias y la variance.
+●  Bias: La inhabilidad de una función para capturar la verdadera se?al.
+● Variance: La cantidad por la que las predicciones deberían cambiar si ajustamos el modelo a un dataset distinto.
+- Adicionalmente, los datos del mundo real contarán con ruido, con el que tendremos que convivir.
+- La idea es minimizar tanto el bias como la variance por medio de regularización
+
+Maximum likelihood estimation  ---> La función likelihood nos permite encontrar un modelo que se ajuste bien a los datos.
+- P(x|theta) -> Likelihood: Prob de los datos, dado un modelo con ciertos parametros.
+- P(theta|x) -> Posterior
+- P(theta) -> Prior; subjetiva.
 - P(x) - Evidencia; Prob. marginal.
+
 
 Minimizar: derivar parcialmente e igualar a cero.
 
@@ -34,6 +72,186 @@ Pasos del MLE.
 2.- Aplicar -log o -ln.
 3.- Transformar multiplicaciones (epitatorias) a sumatorias.
 4.- Derivar e igualar a cero.
+
+
+- Matriz inversa ----> Matriz cuadrada e invertible <----> det(A) != 0
+
+
+- Metricas de desempeno para regresion ---> practica que nos permite evaluar el desempeno del modelo en nuevos datos. Las loss functions no son suficientes, porque tienen terminos regularizadores que cambian su valor.
+Las metricas son:
+- MSE - Mean Squared Error  ---> Muy útil cuando los errores grandes deben ser castigados más. Penaliza más los errores grandes debido a la elevación al cuadrado. No es directamente interpretable en las mismas unidades que la variable objetivo.
+- RMSE - Root Mean Squared Error ---> Se interpreta en las mismas unidades que la variable objetivo. Es mas intuitivo que el MSE.
+- MAE - Mean absolute error ---> Mide el error promedio sin elevarlo al cuadrado. No penaliza tanto los errores grandes como el MSE. Es mas robusto a outliers que el MSE.
+- Huber Loss - ----> Es cuadratico para errores peque?os y lineal para errores grandes. Muy util si hay outliers.
+- R2 (R^2) - varianza explicada o coeficiente de determinacion   -----> Indica que proporcion de la variabilidad de los datos es explicada por el modelo. Rango: (?infinito,1], donde 1 indica un modelo perfecto y valores negativos indican un modelo peor que la media. No siempre es una buena metrica si el modelo no es lineal. Como el nombre lo indica, es el cuadrado de la correlacion lineal.
+- MAPE
+
+Resumen metricas desempeno para regresion:
+Cada métrica muestra algo acerca del modelo
+● Si los outliers son un problema: MAE o Huber Loss.
+● Si los errores grandes deben ser castigados mas: MSE o RMSE.
+● Si necesitas evaluar que tan bien el modelo explica la variabilidad: R^2
+
+outlier ---> valor atipico. Muy distante del resto de datos en un conjunto.
+
+
+Modelos de clasificacion
+
+Label encoding ---> si K=2 conviene usar esta. Asigna a cada categoria un número entero unico. Desventaja: asignar numeros puede inducir un orden artificial entre categorias inexistente?.
+One hot encoding ----> si K>2 conviene usar esta. Genera variables binarias (0/1) por cada categoría. Convierte cada categoría en una columna distinta.
+
+Para modelos de clasificacion, necesitamos que las probabilidades residan en el rango (0,1).
+funcion de activacion ---> funcion no lineal
+Esta clase de modelos se llaman Generalized linear models (GLM). Serian igualmente aplicables si utilizamos una matriz de diseno.
+
+Teorema de Bayes ---> Expresa la probabilidad condicional de un evento teniendo en cuenta la probabilidad de eventos relacionados. Permite actualizar probabilidades, después de incorporar nueva información. Permite invertir probabilidades condicionales.
+
+p(x|y) ---> posterior
+p(y|x) ---> likelihood
+p(x) ----> prior
+p(y) ----> evidence
+
+p(x|y) = (p(y|x)*p(x))/p(y)
+
+
+Funcion logistica sigmoide ---> Transforma un valor real continuo en un valor entre 0 y 1. Convierte una entrada en una probabilidad.
+- Se puede replantear el Teorema de Bayes para generar una funcion derivable, entre 0 y 1, cuyo valor represente una probabilidad.
+- La inversa de la funcion sigmoide corresponde a la funcion Logit o Log Odds.
+- Es utilizada en regresion logistica, como función de activacion en redes neuronales, y en la modulacion de se?ales. 
+- La salida de la funcion sigmoide siempre estara entre 0 y 1, lo que la hace ideal para representar probabilidades o valores de clasificacion.
+- Es una funcion diferenciable, lo que es importante para algoritmos de aprendizaje automatico que utilizan gradiente.
+
+En caso de K>2 ---> Funcion softmax ---> Esta funcion aplasta los valores de modo que la sumatoria de las K probabilidades sea igual a 1.
+
+Cross-entropy ---> En este caso, la loss function que encontramos al utilizar Maximum likelihood, es la cross entropy.
+- El gradiente de la funcion será necesario para encontrar su valor minimo.
+
+Matrices importantes:
+- Jacobiana: La matriz de las primeras derivadas parciales. Es el gradiente de la funcion original.
+- Hessiana: La matriz de las segundas derivadas parciales. Es el gradiente de la matriz Jacobiana.
+
+
+Metodo de Newton-Raphson.
+- A diferencia de la regresion lineal, no existe una solucion de forma-cerrada, debido a la no linealidad de la función sigmoide.
+- La funcion de error puede ser minimizada por otra tecnica iterativa basada en el metodo de Newton-Raphson.
+- En clasificacion ocupamos Newton Raphson para encontrar minimos.
+- Ocupa la matriz Hessiana, cuyos elementos son las segundas derivadas de E(x) con respecto a w.
+
+Iterative reweighted least squares
+- Si le aplicamos el metodo de Newton-Raphson a la funcion cross-entropy obtenemos la Iterative reweighted least squares (IRLS).
+
+Metricas de desempeno para clasificacion:
+● Confusion matrix ---> Es una tabla que muestra el número de verdaderos positivos (TP), verdaderos negativos (TN), falsos positivos (FP) y falsos negativos (FN).
+● Accuracy -----> Es la proporcion de predicciones correctas sobre el total de predicciones.
+● Precision ----> Mide que proporcion de las predicciones positivas fueron realmente correctas.
+● Recall ------>Mide que proporcion de los casos positivos fueron correctamente identificados.
+● F1-score ----> Es la media armonica entre la precision y el recall, equilibrando ambas metricas.
+● AUC ROC -----> Mide la capacidad del modelo para distinguir entre clases positivas y negativas, considerando todos los posibles umbrales de decision.
+
+Cuando usar cada metrica:
+● Confusion matrix ---> Util en clases balanceadas y se quiere una métrica simple. No recomendable para Dataset desbalanceado.
+● Accuracy ----->  Util cuando se necesita analizar el tipo de errores. No recomendable cuando se necesita un numero unico para comparar modelos.
+● Precision ----> Util cuando se deben minimizar los falsos positivos. No recomendable cuando se deben minimizar los falsos negativos.
+● Recall ------> Util cuando se deben minimizar los falsos negativos. No recomendable cuando se deben minimizar los falsos positivos.
+● F1-score ----> Util cuando se busca equilibrio entre precision y recall. No recomendable cuando se debe optimizar una sola metrica (precision o recall).
+● AUC ROC -----> Util cuando se necesita medir la capacidad discriminativa del modelo. No recomendable cuando se prefiere una metrica más intuitiva para clasificación binaria.
+
+
+Reduccion de dimensionalidad
+
+- Partimos de M dimensiones, y nos quedamos con las K dimensiones que mejor explican la variabilidad de nuestros datos
+
+
+Descomposicion de matrices ---> Muchas veces nos interesa factorizar matrices como productos de otras más simples. Algunas operaciones como las inversas, potencias o cálculo de determinantes se vuelven más sencillas al utilizar estas factorizaciones. Algunos ejemplos son la factorización LU o la de Cholesky.
+
+Sea A una matriz cuadrada de dimensiones nxn. Entonces λ (lambda) es un eigenvalue de A y x es su correspondiente eigenvector, sí se cumple que: 
+Ax =  λ (lambda) * x
+
+Eigenvalue (valor propio) ---> son las raices del polinomio caracteristico de la matriz A. Se utilizan para representar la magnitud de la transformacion que se aplica a los vectores propios.
+Eigenvector (vector propio) ---> son vectores que no cambian su direccion cuando se les aplica una transformacion lineal, como una rotacion o reflexionn, solo su modulo. 
+pol caracteristico: pA(lambda) = det(A - lambda * I)
+
+Resolviendo (A - lambda * I)*x = 0 se encuentran los vectores propios.
+En PCA los vectores propios se usan para construir los componentes principales, que son vectores que se utilizan para representar la mayor cantidad de variabilidad en el conjunto de datos.
+
+Eigendecomposition
+Una matriz cuadrada A puede ser descompuesta en: A = PDP^-1
+P ---> matriz cuadrada compuesta de los eigenvectors de A.
+D ---> matriz diagonal con los eigenvalues de A.
+- La eigendecomposition sólo es valida para matrices cuadradas. La gran mayoria de veces nuestros datos no tendran esta propiedad.
+
+Singular value decomposition (SVD)
+- SVD es el método de descomposición más importante en el álgebra lineal. Puede ser aplicado a todas las matrices, no sólo a las cuadradas.
+Def: Siendo A una matriz de dimensión mxn, la SVD es una descomposición de la forma: Amxn = Umxm * Summxn * Vnxu^T 
+
+- Donde U y V son matrices ortogonales y Σ (sum) es rectangular, pero contiene una sub-matriz diagonal con (sum) Σii = (sigma) σi  >= 0.
+- Los valores (sum) Σii se llaman singular values y están ordenados de forma descendente. Los vectores ui se llama left-singularvectors y los vectores vj se llaman right-singular vectors.
+
+Si comparamos la eigendecomposition de A con su SVD, nos damos cuenta de que son exactamente lo mismo.
+
+
+- Trabajar directamente con datos de alta dimension tiene muchas dificultades
+● Análisis.
+● Interpretación.
+● Visualización.
+● Almacenamiento.
+
+Este fenómeno se conoce como curse of dimensionality.
+
+Pero: Muchas dimensiones pueden ser redundantes. Pueden estar correlacionadas con otras.
+
+Factores latentes ---> En nuestros datasets, los datos estan explicados por determinados factores “invisibles”, que cuentan con ciertos grados de libertad.
+
+Por ejemplo, los factores que generan la diversidad del dataset de dígitos podrían ser:
+● Escala.
+● Posición en eje x e y.
+● Rotaciones.
+● Caligrafía, etc.
+Podemos imaginar todos los que queramos, pero seguramente serán menores al tama?o real de los datos (100x100 px). Utilizando sólo la rotación y la posición (3 factores) podemos generar muchas instancias del número 3. Estos se denominan factores latentes.
+
+Principal Component Analysis (PCA) ---> se utiliza para la identificacion de patrones simples, factores latentes y estructuras de alta dimensionalidad.
+- Ha sido el algoritmo mas utilizado para compresion de datos por mas de 100 a?os.
+Podemos obtener el PCA utilizando dos perspectivas equivalentes:
+● Maximizando la varianza.
+● Minimizando el reconstruction error.
+
+PCA como algoritmo:
+Podemos generar un PCA siguiendo estos
+pasos:
+1. Centrar los datos.
+2. Calcular la matriz de covarianza.
+3. Calcular los autovalores y autovectores.
+
+O lo que es equivalente:
+1. Centrar los datos.
+2. Calcular el SVD.
+
+- Obtener los eigenvalues en la practica es muy costoso ---> Obtener la eigen-decomposition de los D componentes principales es un problema de complejidad O(N^3).
+- Si solo necesitamos los M primeros componentes, se reduce a una complejidad O(MN^2).
+
+?Cuantos componentes son necesarios? ---> Podemos plantear el problema de representar nuestros datos con varianza explicada deseada.
+- Esta se obtiene de la normalizacion y acumulacion de los eigenvalues como porcentaje.
+- O tambien podemos eliminar los eigenvalues que expliquen menos de un porcentaje de la varianza. Por ejemplo, ignorar las varianzas menores a 5%.
+
+- Cada componente es construido por una combinacion de las diferentes features.
+- El peso de cada feature asignado a cada componente recibe el nombre de loading. Podemos interpretar los patrones y tendencias obtenidos.
+
+Resumen reduccion de dimensionalidad:
+- Reduce el tiempo de computacion y espacio de almacenamiento.
+- Necesitaremos menos parametros para entrenar nuestros modelos, por lo que seremos menos propenso al overfitting.
+- Ademas, la correlacion sera nula entre las nuevas features, por tanto independientes entre si. De esta forma eliminamos redundancia.
+
+Linear Autoencoder ---> Podemos utilizar el PCA como un linear autoencoder para generar nuevos datos.
+- Esto lo hacemos sampleando a partir de un espacio latente. 
+- Este vector que comprime la informacion original, y que ademas podemos utilizar para re muestrear, se denomina embedding.
+
+
+
+
+
+
+
+
 
 comando: 
 conda create -n ML python=3.10
@@ -56,7 +274,7 @@ pip list
 
 
 intentar evitar el overfitting
-matriz de dise帽o es la transpuesta de fi
+matriz de diseno es la transpuesta de fi
 
 
 
@@ -107,10 +325,10 @@ el accuracy en train y test es similar, entonces es probable que tenga poco over
 
 Clase 16/04/2025
 
-Mult. Matricial ------> Transformaci贸n lineal ---> Cambio de Perspectiva
+Mult. Matricial ------> Transformacion lineal ---> Cambio de Perspectiva
 
-Cuando se aplica la transformaci贸n lineal (Mult. Matricial) los vectores no suelen conservar su direcci贸n.
-Pero hay vectores especiales que s铆 conservan su direcci贸n ---> Vectores propios.
+Cuando se aplica la transformacion lineal (Mult. Matricial) los vectores no suelen conservar su direccion.
+Pero hay vectores especiales que si conservan su direccion ---> Vectores propios.
 Los valores propios son los valores por los que se escalan los vectores propios.
 
 
@@ -120,18 +338,35 @@ det(A - lambda * I) = 0
 SVD ---> Teo. fundamental Alg. Lineal
 
 
+Clase 25/04
+
+va preguntaar diferencia entre macro avg y weighted avg
 
 
+Clase 07/05
+
+Teoria de la informacion
+
+La unidad de medida depende de la base del log
+base 2 --> bits.
+base 10 --> decibeles.
+ln --> Nats.
 
 
+H(p,q) --> Cross Entropy
+
+P(x,y) ---> conjunta --> dependientes
+P(x)*P(y) ---> independientes
+MI = KL(P(x,y)||P(x)P(y))
+
+Data Drift ---> El como se mueven los datos entre la distribucion de los modelos entrenados y la distribucion posterior.
+Manhattan ---> L1 
+Euclidean ---> L2
 
 
+J ---> Inercia / Distorsion / "Sum of squares"
 
-
-
-
-
-
+Optimizar funciones ---> MLE y EM (expectation maximization)
 
 
 
