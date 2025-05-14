@@ -369,6 +369,42 @@ J ---> Inercia / Distorsion / "Sum of squares"
 Optimizar funciones ---> MLE y EM (expectation maximization)
 
 
+--------------------------------------------------------------------
+
+Clase 14/05
+
+Naive-Bayes
+- Sirve para features categoricas.
+- Es mucho mas escalable que la regresion logistica.
+- Asume independencia entre las features.
+
+p(x|y) ---> posterior
+p(y|x) ---> likelihood ---> P(Datos|Modelo)
+p(x) ----> prior/subjective
+p(y) ----> evidence/marginal
+
+Prior ---> MAP (Max. a Posterior) (se da cuando tenemos Moda Evidente) ---> Lim N -> infinito ---> MLE.
+
+
+Conjugate Prior
+
+Mutual information ---> reduce un poco la dimensionalidad --> sirve para categoricas y binarias, cosa que PCA no.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
